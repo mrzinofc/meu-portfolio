@@ -6,13 +6,18 @@ document.getElementById('contact-form').addEventListener('submit', function(even
 
     fetch('/', {
         method: 'POST',
-        body: formData,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(formData).toString()
     }).then(response => {
         if (response.ok) {
             alert('Formulário enviado com sucesso!');
             form.reset();
         } else {
-            alert('Ocorreu um erro ao enviar o formulário.');
+            return response.text().then(text => {
+                throw new Error(text);
+            });
         }
     }).catch(error => {
         console.error('Erro ao enviar formulário:', error);
