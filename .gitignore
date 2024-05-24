@@ -1,0 +1,5 @@
+# Variáveis de ambiente
+.env
+
+# Dependências do Node.js
+node_modules/

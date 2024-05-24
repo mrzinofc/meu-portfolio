@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let navbar = document.querySelector('.navbar');
     let sections = document.querySelectorAll('section');
     let navLinks = document.querySelectorAll('header nav a');
+    let contactForm = document.getElementById('contact-form');
 
     window.onscroll = () => {
         sections.forEach(sec => {
@@ -24,4 +25,24 @@ document.addEventListener("DOMContentLoaded", () => {
         menuIcon.classList.toggle('bx-x');
         navbar.classList.toggle('active');
     };
+
+    // Adicionando evento de envio do formulário
+    contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        let formData = new FormData(contactForm);
+
+        try {
+            let response = await fetch('/', { // O Netlify redirecionará automaticamente os dados do formulário para o endpoint correto
+                method: 'POST',
+                body: formData
+            });
+
+            let data = await response.json();
+            console.log(data); // Você pode fazer algo com a resposta do servidor, como exibir uma mensagem para o usuário
+        } catch (error) {
+            console.error('Erro ao enviar formulário:', error);
+            // Você pode exibir uma mensagem de erro para o usuário aqui
+        }
+    });
 });
