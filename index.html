@@ -114,7 +114,7 @@
 
     <section class="contact" id="contact">
         <h2 class="heading">Contate <span>- Me</span></h2>
-        <form action="processar_formulario.php" method="post">
+        <form id="contact-form" method="POST">
             <div class="input-box">
                 <input type="text" name="nome" placeholder="Nome Completo" required autocomplete="name">
                 <input type="email" name="email" placeholder="Email" required autocomplete="email">
@@ -127,7 +127,23 @@
             <input type="submit" value="Enviar Mensagem" class="btn">
         </form>
     </section> <!--contatos-->
-
+    
+    <section class="contact" id="contact">
+        <h2 class="heading">Contate <span>- Me</span></h2>
+        <form id="contact-form" method="POST">
+            <div class="input-box">
+                <input type="text" name="nome" placeholder="Nome Completo" required autocomplete="name">
+                <input type="email" name="email" placeholder="Email" required autocomplete="email">
+            </div>
+            <div class="input-box">
+                <input type="tel" name="telefone" placeholder="Número de Telefone" autocomplete="tel">
+                <input type="text" name="assunto" placeholder="Assunto">
+            </div>
+            <textarea name="mensagem" cols="30" rows="10" placeholder="Sua Mensagem" required autocomplete="message"></textarea>
+            <input type="submit" value="Enviar Mensagem" class="btn">
+        </form>
+    </section>
+    
     <footer class="footer">
         <div class="social">
             <a href="https://www.linkedin.com/in/mrzinofc/" target="_blank"><i class='bx bxl-linkedin' ></i></a>
