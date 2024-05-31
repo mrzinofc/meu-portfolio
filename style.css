@@ -503,10 +503,24 @@ section.project .flex {
     font-weight: 600;
     opacity: 0;
     transition: .5s;
+    text-align: center; /* Centraliza o texto dentro da overlay */
+    padding: 10px; /* Adiciona padding para espaçamento interno */
+    box-sizing: border-box; /* Garante que padding não cause overflow */
+    overflow: hidden; /* Previne que o texto saia das bordas */
+}
+
+.overlay.break-line {
+    white-space: nowrap; /* Inicialmente, impede a quebra de linha */
 }
 
 .overlay:hover {
     opacity: 1;
+}
+
+.overlay a:hover {
+    color: var(--text-color);
+    border-bottom: 3px solid var(--main-color);
+    transition: 1s;       
 }
 
 .contact {
@@ -758,23 +772,47 @@ section.project .flex {
     }
   }
 
-    @media (max-width: 600px) {
-    section.project .flex {
-        gap: 15px; /* Reduz ainda mais o espaço entre as imagens */
-        justify-content: center; /* Centraliza as imagens */
+  @media (max-width: 740px) and (min-width: 600px) {
+    .overlay.break-line {
+        white-space: normal; /* Permite a quebra de linha apenas entre 740px e 600px */
+        word-wrap: break-word; /* Força a quebra de linha dentro da palavra, se necessário */
     }
-  }
+}
 
-    @media (max-width: 400px) {
+@media (max-width: 600px) {
+    .overlay {
+        font-size: 26px; /* Ajusta o tamanho da fonte para telas menores */
+    }
+    .overlay.break-line {
+        font-size: 24px; /* Ajusta o tamanho da fonte para os títulos com quebra de linha */
+    }
     section.project .flex {
-        gap: 10px; /* Reduz ainda mais o espaço entre as imagens */
+        flex-wrap: wrap; /* Permite quebra de linha das imagens */
+        gap: 15px; /* Reduz o espaço entre as imagens */
         justify-content: center; /* Centraliza as imagens */
     }
-  }
+}
 
-    @media (max-width: 320px) {
-    section.project .flex {
-        gap: 2px; /* Reduz ainda mais o espaço entre as imagens */
-        justify-content: center; /* Centraliza as imagens */
+@media (max-width: 400px) {
+    .overlay {
+        font-size: 26px; /* Ajusta ainda mais o tamanho da fonte para telas menores */
     }
-  }
+    .overlay.break-line {
+        font-size: 24px; /* Ajusta ainda mais o tamanho da fonte para os títulos com quebra de linha */
+    }
+    section.project .flex {
+        gap: 10px; /* Reduz o espaço entre as imagens */
+    }
+}
+
+@media (max-width: 320px) {
+    .overlay {
+        font-size: 26px; /* Ajusta ainda mais o tamanho da fonte para telas menores */
+    }
+    .overlay.break-line {
+        font-size: 24px; /* Ajusta ainda mais o tamanho da fonte para os títulos com quebra de linha */
+    }
+    section.project .flex {
+        gap: 2px; /* Reduz o espaço entre as imagens */
+    }
+}
